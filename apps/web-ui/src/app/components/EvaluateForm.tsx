@@ -48,9 +48,12 @@ export function EvaluateForm() {
     <section className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 dark:bg-zinc-900 dark:ring-white/10">
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label className="mb-2 block font-medium">CV</label>
+          <label htmlFor="cv-input" className="mb-2 block font-medium">
+            CV
+          </label>
 
           <textarea
+            id="cv-input"
             value={cv}
             onChange={(e) => setCv(e.target.value)}
             placeholder="Paste your CV here..."
@@ -62,9 +65,12 @@ export function EvaluateForm() {
         </div>
 
         <div>
-          <label className="mb-2 block font-medium">Job Description</label>
+          <label htmlFor="jd-input" className="mb-2 block font-medium">
+            Job Description
+          </label>
 
           <textarea
+            id="jd-input"
             value={jd}
             onChange={(e) => setJd(e.target.value)}
             placeholder="Paste the job description here..."
@@ -78,6 +84,7 @@ export function EvaluateForm() {
 
       <div className="mt-8 flex justify-center">
         <button
+          type="button"
           onClick={handleEvaluate}
           disabled={loading}
           className="rounded-xl bg-black px-6 py-3 text-white disabled:opacity-50"

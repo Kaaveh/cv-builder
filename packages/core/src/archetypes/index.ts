@@ -1,4 +1,4 @@
-import type { RoleArchetype, CVInput } from "../types.js";
+import type { RoleArchetype } from "../types.js";
 
 /**
  * Registry of role archetypes. Each archetype defines:

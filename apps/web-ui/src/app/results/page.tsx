@@ -1,17 +1,18 @@
 "use client";
 
+import type { EvaluationResult } from "@cv-builder/core";
 import { useEffect, useState } from "react";
 import { ScoreCard } from "../components/ScoreCard";
 import { getEvaluationResult } from "../lib/evaluation-storage";
 
 export default function ResultsPage() {
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<EvaluationResult | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const data = getEvaluationResult();
 
-    setResult(data);
+    setResult(data as EvaluationResult | null);
     setLoading(false);
   }, []);
 
@@ -33,8 +34,8 @@ export default function ResultsPage() {
         <h2 className="mb-4 text-xl font-semibold">Strengths</h2>
 
         <ul className="space-y-2">
-          {result.strengths.map((strength: string, index: number) => (
-            <li key={index}>• {strength}</li>
+          {result.strengths.map((strength: string) => (
+            <li key={strength}>• {strength}</li>
           ))}
         </ul>
       </section>
@@ -42,8 +43,8 @@ export default function ResultsPage() {
       <section className="mt-8 rounded-2xl border p-6">
         <h2 className="mb-4 text-xl font-semibold">Dimensions</h2>
 
-        {result.dimensions.map((dimension: any, index: number) => (
-          <div key={index} className="mb-3 rounded-xl border p-4">
+        {result.dimensions.map((dimension) => (
+          <div key={dimension.name} className="mb-3 rounded-xl border p-4">
             <div className="flex justify-between">
               <span>{dimension.name}</span>
 

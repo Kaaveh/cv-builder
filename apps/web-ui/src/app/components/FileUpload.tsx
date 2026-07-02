@@ -40,7 +40,7 @@ export function FileUpload({ onContentLoaded }: FileUploadProps) {
     await processFile(files[0]);
   }
 
-  async function handleDrop(event: DragEvent<HTMLDivElement>) {
+  async function handleDrop(event: DragEvent<HTMLButtonElement>) {
     event.preventDefault();
 
     await handleFiles(event.dataTransfer.files);
@@ -48,18 +48,25 @@ export function FileUpload({ onContentLoaded }: FileUploadProps) {
 
   return (
     <>
-      <div
+      <button
+        type="button"
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
         onClick={() => inputRef.current?.click()}
-        className="mt-4 cursor-pointer rounded-xl border-2 border-dashed border-zinc-300 p-6 text-center transition hover:border-zinc-500"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            inputRef.current?.click();
+          }
+        }}
+        className="mt-4 block w-full cursor-pointer rounded-xl border-2 border-dashed border-zinc-300 p-6 text-center transition hover:border-zinc-500"
       >
         <p className="font-medium">Drag & Drop a file here</p>
 
         <p className="mt-2 text-sm text-zinc-500">Supports .txt and .md</p>
 
         {fileName && <p className="mt-2 text-xs text-green-600">Loaded: {fileName}</p>}
-      </div>
+      </button>
 
       <input
         ref={inputRef}
