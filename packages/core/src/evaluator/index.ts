@@ -182,7 +182,75 @@ function findIssues(cv: string, _archetype: RoleArchetype) {
       });
     }
   }
+  // Word count heuristic: CVs >800 words (~2 pages), >1000 clearly too long
+  const wordCount = cv.trim() ? cv.trim().split(/\s+/).length : 0;
 
+  if (wordCount > 1000) {
+    issues.push({
+      element: "Excessive CV length",
+      why: "CVs longer than 2 pages reduce readability and make it harder for recruiters to quickly identify key achievements.",
+      fix: "Keep CV within 1–2 pages by removing outdated experience and focusing on high-impact work.",
+      severity: "major",
+    });
+  } else if (wordCount > 800) {
+    issues.push({
+      element: "Potentially long CV",
+      why: "CVs over ~800 words may exceed optimal length and reduce recruiter attention.",
+      fix: "Keep CV concise (1–2 pages) by shortening bullet points and removing less relevant details.",
+      severity: "minor",
+    });
+  }
+
+  const DATE_FORMAT_PATTERNS = [
+    { type: "YYYY-MM", regex: /\b\d{4}-\d{2}\b/ },
+    { type: "MM-YYYY", regex: /\b\d{2}-\d{4}\b/ },
+    { type: "YYYY-YYYY", regex: /\b\d{4}\s*-\s*\d{4}\b/ },
+    {
+      type: "Mon YYYY",
+      regex: /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\b/i,
+    },
+  ];
+
+  const formats = new Set<string>();
+
+  for (const { type, regex } of DATE_FORMAT_PATTERNS) {
+    if (regex.test(cv)) {
+      formats.add(type);
+    }
+  }
+
+  if (formats.size > 1) {
+    issues.push({
+      element: "Inconsistent date formats",
+      why: `Multiple formats detected: ${[...formats].join(", ")}`,
+      fix: "Use a consistent format throughout. Recommended: Mon YYYY (e.g., Jan 2022).",
+      severity: "minor",
+    });
+  }
+
+  const text = cv.toLowerCase();
+  const educationIndex = text.indexOf("education");
+  const experienceIndex = text.indexOf("experience");
+
+  if (educationIndex !== -1 && experienceIndex !== -1) {
+    const isEducationFirst = educationIndex < experienceIndex;
+    const jobMatches = new Set(
+      text.match(
+        /\b(engineer|developer|manager|analyst|consultant|intern|lead|architect|scientist|specialist|associate|director|officer|administrator|designer|programmer|tester|qa|product|data|software|frontend|backend|fullstack|devops|sre|mobile)\b/g
+      ) || []
+    );
+
+    const isExperienced = jobMatches.size >= 2;
+
+    if (isEducationFirst && isExperienced) {
+      issues.push({
+        element: "Education-first layout",
+        why: "Experienced candidates should lead with work experience, as recruiters prioritize recent professional history during quick scans.",
+        fix: "Move Education below Experience. Lead with your work history.",
+        severity: "major",
+      });
+    }
+  }
   return issues;
 }
 

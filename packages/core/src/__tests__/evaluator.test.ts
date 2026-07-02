@@ -77,10 +77,10 @@ describe("evaluate", () => {
       cv: { content: strongCV, format: "markdown" },
     });
 
-    expect(
-      withJD.dimensions.find((d) => d.name === "Keyword Match")?.score
-    ).toBeGreaterThanOrEqual(
-      withoutJD.dimensions.find((d) => d.name === "Keyword Match")?.score
-    );
+    const withJDScore = withJD.dimensions.find((d) => d.name === "Keyword Match")?.score;
+    const withoutJDScore = withoutJD.dimensions.find(
+      (d) => d.name === "Keyword Match"
+    )?.score;
+    expect(withJDScore).toBeGreaterThanOrEqual(withoutJDScore ?? 0);
   });
 });

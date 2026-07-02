@@ -1,3 +1,4 @@
+import { EvaluateForm } from "./components/EvaluateForm";
 import { Header } from "./components/layout/Header";
 
 export default function Home() {
@@ -44,6 +45,8 @@ export default function Home() {
               </p>
             </article>
           </section>
+
+          <EvaluateForm />
 
           <section className="rounded-3xl border border-dashed border-zinc-300 p-8 dark:border-zinc-700">
             <p className="max-w-3xl text-base leading-8 ">
