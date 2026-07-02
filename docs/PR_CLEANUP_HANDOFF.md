@@ -7,10 +7,9 @@
 ## TL;DR
 
 - 20 open PRs reviewed
-- 12 merged into `cleanup/pr-integration-mvp`
+- 14 merged into `cleanup/pr-integration-mvp`
 - 4 closed (superseded, duplicate, or no longer applicable)
-- 3 left open for human decision
-- 1 already superseded by another merged PR (closed with explanation)
+- 2 left open for human decision
 - `pnpm test` → 21 passing eval-fixture tests
 - `pnpm lint` → clean (one informational notice, no errors)
 - `pnpm build` → all 6 packages build
