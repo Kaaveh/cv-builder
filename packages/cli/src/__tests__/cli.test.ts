@@ -1,7 +1,7 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("cli package", () => {
-    it("runs without errors", () => {
-        expect(true).toBe(true);
-    });
+  it("runs without errors", () => {
+    expect(true).toBe(true);
+  });
 });

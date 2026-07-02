@@ -92,9 +92,7 @@ describe("evaluate", () => {
       cv: { content: makeText(850), format: "markdown" },
     });
 
-    const issue = result.issues.find(i =>
-      i.element.includes("CV")
-    );
+    const issue = result.issues.find((i) => i.element.includes("CV"));
 
     expect(issue?.severity).toBe("minor");
   });
@@ -107,9 +105,7 @@ describe("evaluate", () => {
       cv: { content: makeText(1100), format: "markdown" },
     });
 
-    const issue = result.issues.find(i =>
-      i.element.includes("CV")
-    );
+    const issue = result.issues.find((i) => i.element.includes("CV"));
 
     expect(issue?.severity).toBe("major");
   });

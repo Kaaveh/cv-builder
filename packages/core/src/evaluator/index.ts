@@ -205,7 +205,10 @@ function findIssues(cv: string, _archetype: RoleArchetype) {
     { type: "YYYY-MM", regex: /\b\d{4}-\d{2}\b/ },
     { type: "MM-YYYY", regex: /\b\d{2}-\d{4}\b/ },
     { type: "YYYY-YYYY", regex: /\b\d{4}\s*-\s*\d{4}\b/ },
-    { type: "Mon YYYY", regex: /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\b/i }
+    {
+      type: "Mon YYYY",
+      regex: /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\b/i,
+    },
   ];
 
   const formats = new Set<string>();
@@ -232,7 +235,9 @@ function findIssues(cv: string, _archetype: RoleArchetype) {
   if (educationIndex !== -1 && experienceIndex !== -1) {
     const isEducationFirst = educationIndex < experienceIndex;
     const jobMatches = new Set(
-      (text.match(/\b(engineer|developer|manager|analyst|consultant|intern|lead|architect|scientist|specialist|associate|director|officer|administrator|designer|programmer|tester|qa|product|data|software|frontend|backend|fullstack|devops|sre|mobile)\b/g) || [])
+      text.match(
+        /\b(engineer|developer|manager|analyst|consultant|intern|lead|architect|scientist|specialist|associate|director|officer|administrator|designer|programmer|tester|qa|product|data|software|frontend|backend|fullstack|devops|sre|mobile)\b/g
+      ) || []
     );
 
     const isExperienced = jobMatches.size >= 2;
