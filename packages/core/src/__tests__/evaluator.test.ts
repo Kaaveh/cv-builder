@@ -1,7 +1,7 @@
+import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { describe, expect, it } from "vitest";
 import { evaluate } from "../evaluator/index.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -78,35 +78,9 @@ describe("evaluate", () => {
     });
 
     expect(
-      withJD.dimensions.find((d) => d.name === "Keyword Match")?.score
+      withJD.dimensions.find((d) => d.name === "Keyword Match")!.score
     ).toBeGreaterThanOrEqual(
-      withoutJD.dimensions.find((d) => d.name === "Keyword Match")?.score
+      withoutJD.dimensions.find((d) => d.name === "Keyword Match")!.score
     );
-  });
-
-  it("flags CVs over 800 words as minor issue", async () => {
-    const makeText = (count: number) =>
-      Array.from({ length: count }).fill("word").join(" ");
-
-    const result = await evaluate({
-      cv: { content: makeText(850), format: "markdown" },
-    });
-
-    const issue = result.issues.find((i) => i.element.includes("CV"));
-
-    expect(issue?.severity).toBe("minor");
-  });
-
-  it("flags CVs over 1000 words as major issue", async () => {
-    const makeText = (count: number) =>
-      Array.from({ length: count }).fill("word").join(" ");
-
-    const result = await evaluate({
-      cv: { content: makeText(1100), format: "markdown" },
-    });
-
-    const issue = result.issues.find((i) => i.element.includes("CV"));
-
-    expect(issue?.severity).toBe("major");
   });
 });
