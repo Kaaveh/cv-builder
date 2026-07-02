@@ -18,7 +18,7 @@ scope for this MVP.
 
 | Surface | Status | Notes |
 |---|---|---|
-| Core evaluation engine | Ready | 6 dimensions, 8 archetypes, deterministic |
+| Core evaluation engine | Ready | 6 dimensions, 7 archetypes, deterministic |
 | CLI evaluator | Ready | `pnpm --filter @cv-builder/cli build` then run from `packages/cli/dist/` |
 | Web UI (paste + score) | Ready | Static export, `/`, `/results`, `/feedback` |
 | Eval harness + fixtures | Ready | 5 golden fixtures under `packages/eval/fixtures/` |
@@ -78,8 +78,8 @@ browser-data clear. No server round-trip happens at any point.
 - **Score an existing resume** in the web UI or CLI
 - **6 evaluation dimensions:** Shipped Evidence, Quantified Impact,
   Tooling Visibility, ATS Compatibility, Keyword Match, Public Proof
-- **8 role archetypes** with role-specific weights:
-  AI Product Manager, AI Engineer, ML Engineer, Backend Engineer,
+- **7 role archetypes** with role-specific weights:
+  AI Product Manager, AI Engineer, Backend Engineer,
   Frontend Engineer, QA, DevOps, Data Engineer
 - **Issue list with severity** (`critical` / `major` / `minor`) and a
   concrete `fix` per issue
@@ -103,9 +103,12 @@ browser-data clear. No server round-trip happens at any point.
   after `pnpm dev`. There is no public URL.
 - **No telemetry, no analytics, no cookies.** We have no server-side
   log of your CV.
-- **Eight archetypes only.** If your role isn't covered, the detector
+- **Seven archetypes only.** If your role isn't covered, the detector
   falls back to Backend Engineer. Use the **New archetype** issue
-  template to suggest more.
+  template to suggest more. See
+  [`docs/ARCHETYPE_GAP_AUDIT.md`](./ARCHETYPE_GAP_AUDIT.md) for the
+  full picture (including a parallel registry that powers the prompt
+  pack).
 - **Keyword Match is English-first.** Non-English CVs may score oddly
   on that dimension. Documented in `LOCAL_DEMO.md`.
 

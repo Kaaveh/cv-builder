@@ -114,7 +114,7 @@ attribution was added to commit messages or PR descriptions.
 ## Files of note after cleanup
 
 - `packages/schemas/` — new contract package, the single source of truth for types
-- `packages/intelligence/` — rubric v1 + 8 archetypes
+- `packages/intelligence/` — rubric v1 + 3 archetypes (used by prompts + eval fixtures). The 7 archetypes exposed by the live `packages/core/` registry drive the CLI/Web UI surface. See [`docs/ARCHETYPE_GAP_AUDIT.md`](./ARCHETYPE_GAP_AUDIT.md) for the full picture.
 - `packages/prompts/` — extract / score / validate-claims prompt pack
 - `packages/core/src/evaluator/index.ts` — multi-rule evaluator, 21 passing tests
 - `apps/web-ui/` — CV + JD input screen, file upload, results page

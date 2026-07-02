@@ -164,11 +164,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 ## Supported Role Archetypes
 
-Currently built-in:
+Currently built-in (the ones the CLI's `archetypes` command and the
+web UI's results page expose — see
+[`docs/ARCHETYPE_GAP_AUDIT.md`](docs/ARCHETYPE_GAP_AUDIT.md) for the
+full picture, including the parallel registry that powers the prompt
+pack):
 
 - AI Product Manager
 - AI Engineer
-- Machine Learning Engineer
 - Backend Engineer
 - Frontend Engineer
 - QA / Test Engineer
@@ -183,7 +186,7 @@ Currently built-in:
 
 ### v0.1 (Current Sprint — MVP)
 - [x] Core evaluation engine with 6 dimensions
-- [x] 8 role archetypes
+- [x] 7 role archetypes
 - [x] Universal anti-pattern detection
 - [x] CLI: basic evaluate command
 - [x] Web UI: paste and score screen (local demo)
