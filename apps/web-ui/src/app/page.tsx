@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { EvaluateForm } from "./components/EvaluateForm";
 import { Header } from "./components/layout/Header";
 
@@ -8,40 +9,64 @@ export default function Home() {
       <main className="flex-1 px-6 py-16">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-12">
           <section className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5 dark:bg-zinc-900 dark:ring-white/10 sm:p-12">
-            <p className="text-sm font-medium uppercase tracking-[0.2em]">CV Builder</p>
+            <p className="text-sm font-medium uppercase tracking-[0.2em]">
+              CV Builder · MVP
+            </p>
+
             <div className="mt-4 max-w-3xl space-y-6">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Tailor your resume to the role without starting from scratch.
+                Score your resume against the role before you apply.
               </h1>
-              <p className="text-lg leading-8 ">
-                Paste a job description, highlight the experience that matters, and shape
-                a cleaner CV for tech roles in a few quick steps.
+
+              <p className="text-lg leading-8">
+                Paste your CV and an optional job description. CV Builder runs six quality
+                checks — Shipped Evidence, Quantified Impact, Tooling Visibility, ATS
+                Compatibility, Keyword Match, Public Proof — and shows you what to fix
+                first. Everything runs in your browser; nothing is uploaded.
+              </p>
+
+              <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-400">
+                This is a community MVP. It scores an existing resume — it does not
+                generate, tailor, or rewrite one. Feedback and bug reports are welcome at
+                the bottom of{" "}
+                <Link
+                  href="/results"
+                  className="underline underline-offset-4 hover:text-zinc-900 dark:hover:text-zinc-100"
+                >
+                  a results page
+                </Link>{" "}
+                after you evaluate.
               </p>
             </div>
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
             <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-zinc-900 dark:ring-white/10">
-              <h2 className="text-lg font-semibold">1. Paste the job post</h2>
-              <p className="mt-3 text-sm leading-7 ">
-                Start with the exact role description so the app can focus the CV around
-                the right skills, tools, and experience.
+              <h2 className="text-lg font-semibold">1. Paste a CV</h2>
+
+              <p className="mt-3 text-sm leading-7">
+                Plain text or Markdown works best. Most real-world resumes can be pasted
+                directly from your editor.
               </p>
             </article>
 
             <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-zinc-900 dark:ring-white/10">
-              <h2 className="text-lg font-semibold">2. Shape the story</h2>
-              <p className="mt-3 text-sm leading-7 ">
-                Refine summaries, impact statements, and project bullets to match the role
-                while keeping your background clear and honest.
+              <h2 className="text-lg font-semibold">
+                2. Add a job description (optional)
+              </h2>
+
+              <p className="mt-3 text-sm leading-7">
+                If you add a JD, the Keyword Match dimension becomes active and you get a
+                focused score against that specific role.
               </p>
             </article>
 
             <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-zinc-900 dark:ring-white/10">
-              <h2 className="text-lg font-semibold">3. Export a focused CV</h2>
-              <p className="mt-3 text-sm leading-7 ">
-                End with a cleaner resume that is easier to review and more aligned with
-                the position you are targeting.
+              <h2 className="text-lg font-semibold">3. Read the result</h2>
+
+              <p className="mt-3 text-sm leading-7">
+                Overall score, per-dimension bars, the issues worth fixing first, and a
+                list of strengths you can lean into in the interview.
               </p>
             </article>
           </section>
@@ -49,10 +74,23 @@ export default function Home() {
           <EvaluateForm />
 
           <section className="rounded-3xl border border-dashed border-zinc-300 p-8 dark:border-zinc-700">
-            <p className="max-w-3xl text-base leading-8 ">
-              This starter page is intentionally simple. It gives the web package an
-              app-specific home screen instead of the default Next.js template and leaves
-              room for the real workflow to grow from here.
+            <h2 className="text-base font-semibold">Privacy</h2>
+
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-zinc-700 dark:text-zinc-300">
+              The web app runs entirely in your browser via{" "}
+              <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                @cv-builder/core
+              </code>
+              . Nothing is sent to a server. Local demo only — no telemetry, no analytics,
+              no cookies. Do not paste real personal information (phone, address) into
+              GitHub issues; see{" "}
+              <Link
+                href="/feedback"
+                className="underline underline-offset-4 hover:text-zinc-900 dark:hover:text-zinc-100"
+              >
+                feedback guide
+              </Link>
+              .
             </p>
           </section>
         </div>

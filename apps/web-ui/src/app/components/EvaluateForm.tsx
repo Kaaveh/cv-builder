@@ -61,7 +61,7 @@ export function EvaluateForm() {
           />
 
           <TextStats value={cv} />
-          <FileUpload onContentLoaded={(content) => setCv(content)} />
+          <FileUpload inputId="cv-upload" onContentLoaded={(content) => setCv(content)} />
         </div>
 
         <div>
@@ -78,7 +78,7 @@ export function EvaluateForm() {
           />
 
           <TextStats value={jd} />
-          <FileUpload onContentLoaded={(content) => setJd(content)} />
+          <FileUpload inputId="jd-upload" onContentLoaded={(content) => setJd(content)} />
         </div>
       </div>
 

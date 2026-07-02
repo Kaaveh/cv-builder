@@ -1,8 +1,8 @@
 # CV Builder
 
-**Paste a job description + your CV. Get a scored evaluation, specific rewrites, and a tailored PDF.**
+**Paste your CV and an optional job description. Get a 0–5 evaluation across six dimensions, with a prioritised list of issues and fixes.**
 
-An open source, privacy-first CV builder for tech professionals. Built by the [Tech Immigrants](https://youtube.com/c/TechImmigrants) community.
+This is the **first community MVP**: it scores an existing resume, it does not generate, tailor, or rewrite one. An open source, privacy-first CV evaluator for tech professionals. Built by the [Tech Immigrants](https://youtube.com/c/TechImmigrants) community.
 
 [![CI](https://github.com/TechImmigrants/cv-builder/actions/workflows/ci.yml/badge.svg)](https://github.com/TechImmigrants/cv-builder/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -75,9 +75,30 @@ Clone the repo, open [Claude Code](https://claude.com/claude-code) at the root, 
 
 See [apps/cli/README.md](apps/cli/README.md) for the full guide.
 
-### Web UI (coming soon)
+### Web UI (MVP — local only)
 
-A browser-based interface where you paste your CV and JD, get instant feedback, and export a tailored PDF. No sign-up required, no data leaves your browser.
+```bash
+pnpm dev   # boots at http://localhost:3000
+```
+
+A browser-based interface where you paste your CV and JD, get instant
+feedback, and read the full dimension breakdown. No sign-up, no data leaves
+your browser. PDF upload is not supported yet — use `.txt` or `.md`.
+
+Full guide: [docs/LOCAL_DEMO.md](docs/LOCAL_DEMO.md).
+
+---
+
+## Privacy
+
+- The web UI runs entirely in your browser. Nothing is sent to a server.
+- The CLI reads files locally and prints to stdout. Nothing is uploaded.
+- There is no telemetry, no analytics, no cookies.
+- Results in the web UI are stored in your browser's `localStorage` only.
+
+**Do not paste your real CV into GitHub issues.** Issues are public. Before
+sharing an example, anonymize it first — see
+[docs/FEEDBACK_GUIDE.md](docs/FEEDBACK_GUIDE.md).
 
 ---
 
@@ -158,13 +179,17 @@ Currently built-in:
 
 ## Roadmap
 
-### v0.1 (Current Sprint)
+### v0.1 (Current Sprint — MVP)
 - [x] Core evaluation engine with 6 dimensions
 - [x] 8 role archetypes
 - [x] Universal anti-pattern detection
 - [x] CLI: basic evaluate command
+- [x] Web UI: paste and score screen (local demo)
+- [x] Eval harness with golden fixtures
+- [x] Localization-ready code structure (no strings in wrong place)
+- [x] Privacy model: no telemetry, no upload
 - [ ] Unit tests for scoring logic
-- [ ] Web UI: paste and score screen
+- [ ] PDF text extraction
 
 ### v0.2
 - [ ] LLM-enhanced mode (rewrite suggestions)

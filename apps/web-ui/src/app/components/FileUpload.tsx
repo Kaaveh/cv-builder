@@ -3,35 +3,38 @@
 import { type DragEvent, useRef, useState } from "react";
 
 interface FileUploadProps {
+  inputId: string;
   onContentLoaded: (content: string) => void;
 }
 
-export function FileUpload({ onContentLoaded }: FileUploadProps) {
-  const [fileName, setFileName] = useState("");
+export function FileUpload({ inputId, onContentLoaded }: FileUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [status, setStatus] = useState("");
 
   async function processFile(file: File) {
+    setStatus("");
     const extension = file.name.split(".").pop()?.toLowerCase() || "";
 
     if (extension === "txt" || extension === "md") {
       try {
         const text = await file.text();
         onContentLoaded(text);
-        setFileName(file.name);
+        setStatus(`Loaded ${file.name}`);
       } catch (error) {
         console.error("Failed to read file:", error);
-        alert("Failed to read file. Please try again.");
-        setFileName("");
+        setStatus("Failed to read file. Please try again.");
       }
       return;
     }
 
     if (extension === "pdf") {
-      alert("PDF text extraction is not yet supported. Please use .txt or .md files.");
+      setStatus(
+        "PDF text extraction isn't supported yet. Please paste the content or upload a .txt or .md file."
+      );
       return;
     }
 
-    alert("Unsupported file type.");
+    setStatus("Unsupported file type. Please use .txt or .md.");
   }
 
   async function handleFiles(files: FileList | null) {
@@ -65,13 +68,21 @@ export function FileUpload({ onContentLoaded }: FileUploadProps) {
 
         <p className="mt-2 text-sm text-zinc-500">Supports .txt and .md</p>
 
-        {fileName && <p className="mt-2 text-xs text-green-600">Loaded: {fileName}</p>}
+        <p
+          id={`${inputId}-message`}
+          role="status"
+          aria-live="polite"
+          className="mt-2 min-h-[1rem] text-xs text-amber-600"
+        >
+          {status}
+        </p>
       </button>
 
       <input
         ref={inputRef}
+        id={inputId}
         type="file"
-        accept=".txt,.md,.pdf"
+        accept=".txt,.md"
         className="hidden"
         onChange={(e) => handleFiles(e.target.files)}
       />
