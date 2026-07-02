@@ -4,6 +4,12 @@
 > This document is the single source of truth for what happened, why, and
 > what the next maintainer should know.
 
+> **Status note — historical document.** This is the report from the
+> post-PR #85 cleanup phase (the 14-PR integration that landed MVP
+> foundations on `main` and was finalised by PR #87's MVP release
+> polish). It is kept for context. For the **current** product status,
+> read [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md).
+
 ## TL;DR
 
 - 20 open PRs reviewed

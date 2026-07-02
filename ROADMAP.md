@@ -5,6 +5,19 @@ open for grabs**. For the **vision** (v0.1, v0.2, v0.3), see the
 [README Roadmap section](README.md#roadmap). This file is the **current state**
 — what maintainers and contributors are doing this week and next.
 
+> **Status note — partially stale.** As of the post-PR #87 release, all v0.1
+> MVP sprint items have shipped on `main` (see
+> [`docs/MVP_RELEASE_STATUS.md`](docs/MVP_RELEASE_STATUS.md) for the
+> current MVP snapshot). The "🚧 In progress" list below was last
+> refreshed before that release; the items labelled as open have either
+> merged already or are no longer accurate. Treat this file as a planning
+> draft for the **next** sprint, not a description of today's state.
+> Before picking up an item, search the issue tracker — it may already
+> be shipped.
+>
+> *Last refreshed: 2026-06-22. Next refresh: after the next planning
+> call.*
+
 ## How to read this
 
 - 🚧 **In progress** — assigned, being worked on, has an ETA. Don't pick up
@@ -23,19 +36,18 @@ an acceptance bar reachable in a single sitting (1–4 hours).
 
 | Item | Owner | ETA | Notes |
 |---|---|---|---|
-| **Merge Phase-1 stack** — PRs [#68](https://github.com/TechImmigrants/cv-builder/pull/68), [#69](https://github.com/TechImmigrants/cv-builder/pull/69), [#70](https://github.com/TechImmigrants/cv-builder/pull/70), [#71](https://github.com/TechImmigrants/cv-builder/pull/71), [#72](https://github.com/TechImmigrants/cv-builder/pull/72), [#73](https://github.com/TechImmigrants/cv-builder/pull/73) | @saharpak | **ASAP** | Open since 2026-06-07. Currently the single biggest contributor-experience blocker — new contributors cloning `main` get a different product than what's documented. **Reviewer help urgently wanted — see below.** |
-| CV/JD input screen with file upload — PR [#76](https://github.com/TechImmigrants/cv-builder/pull/76) | unassigned | TBD | Two-column input screen. Depends on Phase-1 merge. |
-| CodeRabbit config expansion — PR [#75](https://github.com/TechImmigrants/cv-builder/pull/75) | unassigned | TBD | Per-package review guidance. |
-| Rule: flag outdated technologies — PR [#74](https://github.com/TechImmigrants/cv-builder/pull/74) | unassigned | TBD | Resolves issue [#53](https://github.com/TechImmigrants/cv-builder/issues/53). |
-| CI: web UI deploy previews on Cloudflare Pages — PR [#78](https://github.com/TechImmigrants/cv-builder/pull/78) | unassigned | TBD | Path-filtered workflow. |
+| **CI: web UI deploy previews to Cloudflare Pages** — PR [#78](https://github.com/TechImmigrants/cv-builder/pull/78) | unassigned | TBD | Path-filtered workflow. Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets. Tracked but out of this audit's scope. |
+| **CLI: color output** — PR [#37](https://github.com/TechImmigrants/cv-builder/pull/37) | unassigned | TBD | Author needs to rebase against post-merge `main`; CLI was refactored after PR #37 opened. Tracked but out of this audit's scope. |
 
-> ### ⚠️ Reviewer help wanted on Phase-1 PRs
+> ### ✅ Recently shipped (post-merge on `main`)
 >
-> The bottleneck isn't writing code — it's review bandwidth. If you have
-> **TypeScript + zod** experience and can review one of #68–#73, comment on
-> the PR. A 30-minute review from someone other than the maintainer unblocks
-> the entire stack and signals to the rest of the contributor base that the
-> project is moving.
+> Phase-1 stack (PRs [#68](https://github.com/TechImmigrants/cv-builder/pull/68)–[#73](https://github.com/TechImmigrants/cv-builder/pull/73)),
+> CV/JD input screen (PR [#76](https://github.com/TechImmigrants/cv-builder/pull/76)),
+> CodeRabbit config expansion (PR [#75](https://github.com/TechImmigrants/cv-builder/pull/75)),
+> outdated-technology rule (PR [#74](https://github.com/TechImmigrants/cv-builder/pull/74)),
+> no-code contribution paths and the MVP demo polish (PR [#85](https://github.com/TechImmigrants/cv-builder/pull/85),
+> PR [#87](https://github.com/TechImmigrants/cv-builder/pull/87)).
+> Full validation in [`docs/MVP_RELEASE_STATUS.md`](docs/MVP_RELEASE_STATUS.md).
 
 ---
 
@@ -55,9 +67,9 @@ scope. **Comment "I'll take this" on the issue to claim.**
 | Rule: flag outdated technologies | S | [#53](https://github.com/TechImmigrants/cv-builder/issues/53) | `good first issue`, `rules`. **PR #74 already in flight — check before starting.** |
 | Add per-dimension feedback strings to evaluator | S | [#48](https://github.com/TechImmigrants/cv-builder/issues/48) | `enhancement`, `core`. |
 | Fix: flag missing contact information | S | [#55](https://github.com/TechImmigrants/cv-builder/pull/55) | `core`. PR already open — needs review. |
-| New archetype: **AI Engineer** | M | (open issue) | Use the [New Archetype template](.github/ISSUE_TEMPLATE/new_archetype.md). Top priority for the 2026 market. |
-| New archetype: **AI Product Manager** | M | (open issue) | Top priority for the 2026 market. |
-| New archetypes: Backend / Frontend / DevOps | M each | (open issue) | Currently advertised in README but unimplemented. |
+| New archetype: **AI Engineer** | M | (open issue) | **Already shipped** as of the MVP — see README "Supported Role Archetypes". Use the [New Archetype template](.github/ISSUE_TEMPLATE/new_archetype.md) to suggest more roles. |
+| New archetype: **AI Product Manager** | M | (open issue) | **Already shipped** as of the MVP — see README "Supported Role Archetypes". |
+| New archetypes: Backend / Frontend / DevOps / QA / Data Engineer | M each | (open issue) | **Already shipped** as of the MVP. README lists eight built-in roles. |
 | Land CONTRIBUTING.md "no-code" section | S | (open issue) | The draft this file came from. |
 | Write `docs/faq.md` ("I got a bad score, what now?") | S | (open issue) | |
 | Write `docs/cli-troubleshooting.md` | S | (open issue) | |
@@ -85,9 +97,10 @@ scope. **Comment "I'll take this" on the issue to claim.**
 - **Suggest new items** — open an issue with the relevant label.
 - **Push a 🅿️ Parked item** — if you think something should be un-parked,
   open an issue with the `roadmap` label and the rationale.
-- **Help review Phase-1 PRs** — the single highest-leverage thing a
-  TypeScript-comfortable contributor can do this week.
+- **Help with the v0.2 backlog** — that's where the meaningful contributor
+  work lives now that v0.1 has shipped.
 
 ---
 
-*Last updated: 2026-06-22*
+*Last updated: 2026-07-02 (post-MVP release). The previous "Last updated"
+date of 2026-06-22 predates the MVP release and is no longer accurate.*

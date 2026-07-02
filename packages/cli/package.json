@@ -1,7 +1,7 @@
 {
   "name": "@cv-builder/cli",
   "version": "0.1.0",
-  "description": "CV Builder CLI — evaluate and tailor your CV from the terminal",
+  "description": "CV Builder CLI — evaluate a CV from the terminal and print a colour-coded score, dimensions, issues, and ATS verdict",
   "type": "module",
   "bin": {
     "cv-builder": "./dist/cli.js"

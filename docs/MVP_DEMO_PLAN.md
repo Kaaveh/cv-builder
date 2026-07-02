@@ -3,6 +3,18 @@
 > Goal: prepare the current CV Builder for a simple public demo.
 > Source: post-merge `main` at `6170aef`. PRs #37 and #78 not in scope.
 
+> **Status note — historical document.** This was the demo-readiness audit
+> written before the polish in PR #87 landed. Some items in the
+> "Current limitations" section below (misleading home copy, results page
+> missing issues, empty-state, FileUpload alert, visual bars, Node version
+> drift) were fixed in PR #87 and follow-up commits. The "demo is
+> local-only ready / cannot be shared publicly without deploying" verdict
+> still holds for the v0.1 release.
+>
+> For the **current** product status, validation results, and what is and
+> is not ready, read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md).
+
 ## What currently works
 
 ### Web UI (`apps/web-ui/`)
@@ -51,8 +63,9 @@
 
 ### Prereqs
 
-- Node 22+ (matches the GitHub Actions workflow)
-- pnpm 9.15+ (`npm install -g pnpm@9.15.0`)
+See [docs/LOCAL_DEMO.md](./LOCAL_DEMO.md) for the current setup guide.
+Quick version: Node.js 20 or newer (matches `package.json`), pnpm 9.15+,
+`pnpm install`, then `pnpm dev`.
 
 ### One-time setup
 

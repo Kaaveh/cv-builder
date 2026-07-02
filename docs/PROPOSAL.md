@@ -1,5 +1,21 @@
 # Proposal — CV Builder v2
 
+> **Status note — historical / aspirational document.** This file is the
+> original v2 proposal written before the MVP shipped. It describes
+> `packages/llm`, `packages/ingestion`, `packages/templates`, an
+> `apps/server` (Fastify), an `apps/telegram` bot, and Tolgee i18n — none
+> of which exist in the current MVP on `main`.
+>
+> The current MVP is a **deterministic, locally-running CV evaluator** that
+> ships `packages/{schemas,intelligence,prompts,core,cli,eval}` and
+> `apps/{cli,web-ui}` only. There is no hosted tier, no Telegram surface,
+> and no LLM adapter in this repo.
+>
+> For the **current** product status, validation results, and what is and
+> is not ready, read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md). Treat this file
+> as a historical design note, not a description of the deployed product.
+
 ## Goal
 
 A TypeScript-only, monorepo CV evaluator and builder. v1 ships **evaluation**: paste a resume + JD, get a typed, evidence-grounded score against a role archetype.

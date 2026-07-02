@@ -1,7 +1,7 @@
 {
   "name": "@cv-builder/core",
   "version": "0.1.0",
-  "description": "CV evaluation and tailoring engine",
+  "description": "Deterministic CV evaluation engine — six-dimension rubric, archetype detection, issue and strength reporting",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

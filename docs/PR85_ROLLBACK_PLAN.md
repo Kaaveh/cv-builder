@@ -1,5 +1,15 @@
 # PR #85 Rollback Plan
 
+> **Status note — historical document.** This is the rollback plan drafted
+> before PR #85 (the 14-PR MVP integration) merged into `main`. The merge
+> was successful and permanent — every subsequent release-readiness check
+> passed. The safety tag `pre-pr85-main-backup-20260702` remains on
+> `origin` as a permanent rollback point. You do not need to act on this
+> doc unless you spot a regression pointing to that merge.
+>
+> For the **current** product status, read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md).
+
 ## Pre-merge state captured
 
 - Tag: `pre-pr85-main-backup-20260702`

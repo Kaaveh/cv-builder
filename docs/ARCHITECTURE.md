@@ -1,5 +1,20 @@
 # Architecture
 
+> **Status note — historical / aspirational document.** This file describes
+> the proposed v2 architecture (Fastify server, Telegram bot, LLM adapter
+> package, ingestion package, templates package, Tolgee i18n). It pre-dates
+> the MVP shipped on `main` as of the post-PR #87 release.
+>
+> The current MVP is a **deterministic, locally-running CV evaluator**. It
+> ships `packages/{schemas,intelligence,prompts,core,cli,eval}` and
+> `apps/{cli,web-ui}` only — no `server`, no `telegram` app, no `llm`,
+> `ingestion`, or `templates` package. PDF parsing, hosted deployment, and
+> rewriting are explicitly out of scope for this MVP.
+>
+> For the **current** product status, validation results, what is and is not
+> ready, read [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md). Treat
+> this file as design context, not a description of the deployed product.
+
 ## Layout
 
 ```

@@ -3,6 +3,12 @@
 > Generated immediately after PR #85 merged into `main`.
 > All validation was run on the post-merge `main` branch.
 
+> **Status note — historical document.** This is the post-merge validation
+> report from PR #85, the 14-PR integration that put MVP foundations on
+> `main`. For the **current** post-merge status and validation results
+> after PR #87, read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md).
+
 ## Merge commit
 
 | Item | Value |

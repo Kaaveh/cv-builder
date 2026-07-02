@@ -1,5 +1,23 @@
 # V1 Scope
 
+> **Status note — historical / aspirational document.** This is the
+> original v1 scope written before the MVP shipped. It lists
+> `packages/llm`, `packages/ingestion`, `packages/templates`,
+> `apps/server`, `apps/telegram`, and Tolgee wiring — none of which exist
+> in the MVP that actually shipped on `main`.
+>
+> The shipped MVP is a **deterministic, locally-running CV evaluator**
+> with `packages/{schemas,intelligence,prompts,core,cli,eval}` and
+> `apps/{cli,web-ui}` only. PDF export, hosted server, LLM provider
+> adapters, and Tolgee i18n are explicitly out of scope and tracked on the
+> roadmap (`ROADMAP.md`).
+>
+> For the **current** product status, validation results, and what is and
+> is not ready, read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md). Treat this file
+> as the original scope document, not a description of the deployed
+> product.
+
 ## In scope
 
 - `packages/schemas` — Resume, JobDescription, Archetype, EvalResult, Claim, Issue

@@ -26,10 +26,10 @@ Good CV tools are expensive. Many job seekers — especially immigrants, career 
 ```
 ┌──────────┐     ┌──────────────┐     ┌──────────────┐
 │  Your CV │ ──▶ │  CV Builder  │ ──▶ │ Score: 4.2/5 │
-└──────────┘     │   Engine     │     │ 3 rewrites   │
-┌──────────┐     │              │     │ 5 issues     │
-│    JD    │ ──▶ │  (6 scoring  │     │ Keywords gap │
-│(optional)│     │  dimensions) │     │ Tailored CV  │
+└──────────┘     │   Engine     │     │ Issues       │
+┌──────────┐     │              │     │ Strengths    │
+│    JD    │ ──▶ │  (6 scoring  │     │ ATS verdict  │
+│(optional)│     │  dimensions) │     │ Archetype    │
 └──────────┘     └──────────────┘     └──────────────┘
 ```
 
@@ -71,7 +71,9 @@ pnpm --filter @cv-builder/cli start archetypes
 
 ### Power User — run it with Claude Code
 
-Clone the repo, open [Claude Code](https://claude.com/claude-code) at the root, and run `/evaluate-cv ./your-resume.pdf`. The evaluation runs entirely on your machine with your own agent — no server, no account, nothing leaves your computer. No build needed.
+Clone the repo, open [Claude Code](https://claude.com/claude-code) at the root, and run `/evaluate-cv ./your-resume.md`. The evaluation runs entirely on your machine with your own agent — no server, no account, nothing leaves your computer. No build needed.
+
+Claude Code can also read PDF and DOCX inputs natively, so `/evaluate-cv ./your-resume.pdf` works as long as the file is on your machine.
 
 See [apps/cli/README.md](apps/cli/README.md) for the full guide.
 

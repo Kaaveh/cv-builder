@@ -4,6 +4,25 @@
 **Target:** Ship MVP within 3 weeks of team alignment call
 **Status:** Planning
 
+> **Status note — historical document.** This is the original Phase 1 plan.
+> It was written before the MVP shipped. It describes `packages/llm`,
+> `packages/ingestion`, `packages/templates`, an `apps/server` (Fastify), an
+> `apps/telegram` bot, Tolgee i18n, and a hosted mode with rate limits —
+> none of which exist in the MVP that actually shipped on `main`.
+>
+> The shipped MVP is a **deterministic, locally-running CV evaluator** with
+> `packages/{schemas,intelligence,prompts,core,cli,eval}` and
+> `apps/{cli,web-ui}` only. The success criteria in this doc (Telegram bot,
+> hosted public URL, EN + FA locales, 3 evaluations/day rate limit) were
+> deferred. PDF parsing, hosted deployment, and rewriting are explicitly
+> out of scope.
+>
+> For the **current** product status, validation results, and what is and
+> is not ready, read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md). Treat this file
+> as the original planning document, not a description of the deployed
+> product.
+
 ---
 
 ## What We're Building

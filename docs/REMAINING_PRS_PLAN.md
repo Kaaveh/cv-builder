@@ -4,6 +4,14 @@
 > Sourced from `gh pr view`, `gh pr diff`, and test merges against the
 > post-merge `main` at `5b59014`.
 
+> **Status note — historical document.** This is the action plan for
+> PR #37 (CLI color) and PR #78 (Cloudflare Pages previews) drafted
+> immediately after PR #85 merged. The factual state of those two PRs as
+> of today is the same — both remain OPEN and are intentionally
+> untouched. For the **current** product status and what's still tracked
+> as out-of-scope (hosted deployment, CLI cosmetic enhancements), read
+> [`docs/MVP_RELEASE_STATUS.md`](./MVP_RELEASE_STATUS.md).
+
 ## TL;DR
 
 | PR  | Title                                 | State       | Verdict                                                                    | Handled by                |

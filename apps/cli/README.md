@@ -19,14 +19,16 @@ tests or the web app.)
 Then, inside Claude Code:
 
 ```text
-/evaluate-cv ./my-resume.pdf
+/evaluate-cv ./my-resume.md
 ```
 
 Optionally add a job description as keyword context:
 
 ```text
-/evaluate-cv ./my-resume.pdf --jd ./job.md
+/evaluate-cv ./my-resume.md --jd ./job.md
 ```
+
+Claude Code can read PDF and DOCX inputs natively, so `/evaluate-cv ./my-resume.pdf` also works as long as the file is on your machine. The local web UI and CLI in this repo parse `.md` and `.txt` only — see [docs/LOCAL_DEMO.md](../../docs/LOCAL_DEMO.md).
 
 No resume handy? Run `/setup-profile` and it'll help you assemble one.
 

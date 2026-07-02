@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CV Builder",
-  description: "Build a tailored resume...",
+  title: "CV Builder — local MVP",
+  description:
+    "Privacy-first CV evaluator for tech professionals. Paste a resume, get a 0–5 score across six dimensions with prioritised fixes. Runs entirely in your browser; nothing is uploaded.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

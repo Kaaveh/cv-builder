@@ -5,9 +5,10 @@ description: Evaluate a resume against the CV Builder rubric and return a scored
 
 # CV Evaluation
 
-Run a resume through the same four-step evaluation the hosted product uses,
-entirely locally. Everything you need lives in this repo — read the source, don't
-guess.
+Run a resume through the same four-step evaluation the local MVP uses,
+entirely on your machine via your own Claude Code. There is no hosted
+version of this product; everything you need lives in this repo — read
+the source, don't guess.
 
 ## Inputs
 
@@ -21,7 +22,7 @@ guess.
    text to produce a structured `Resume`.
 2. **Detect archetype.** Match the resume against the role archetypes in
    `packages/intelligence/src/archetypes/`. Pick the best fit; default to
-   Software Engineer when there's no clear signal. See [archetypes](./archetypes.md).
+   Backend Engineer when there's no clear signal. See [archetypes](./archetypes.md).
 3. **Score.** Apply `packages/prompts/prompts/score.md` with the detected
    archetype's weights and the rubric. See [rubric](./rubric.md) and
    [scoring](./scoring.md). Surface **at least 3** issues, each quoting the exact

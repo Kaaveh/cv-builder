@@ -2,7 +2,7 @@
   "name": "cv-builder",
   "version": "0.1.0",
   "private": true,
-  "description": "Open source CV builder for tech professionals. Paste a job description, get a tailored resume.",
+  "description": "Open source, privacy-first CV evaluator for tech professionals. Score an existing resume across six dimensions and get prioritised issues to fix. Runs locally — no hosted version, no telemetry.",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
