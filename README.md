@@ -221,6 +221,25 @@ pack):
 
 ---
 
+## Contributors
+
+CV Builder is **community-built**. Every merged contribution — code, docs,
+rules, archetypes, tests, research, design feedback, issue triage, and
+honest reviews — came from someone who chose to spend their time on it.
+
+- **[Contributors](docs/CONTRIBUTORS.md)** — human-first recognition for
+  everyone who has shaped the project so far.
+- **[Contribution Snapshot](docs/CONTRIBUTION_SNAPSHOT.md)** — the
+  numbers behind the recognition (as of 2026-07-02).
+- **[GitHub contributors graph](https://github.com/TechImmigrants/cv-builder/graphs/contributors)** —
+  the live view.
+
+If you contributed and don't see your name, please open a PR correcting
+[`docs/CONTRIBUTORS.md`](docs/CONTRIBUTORS.md) — the file is intentionally
+easy to edit.
+
+---
+
 ## Research
 
 Our rules are backed by data, not vibes. See:
