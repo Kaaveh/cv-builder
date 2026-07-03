@@ -40,3 +40,14 @@ Then open [http://localhost:3000](http://localhost:3000).
 - `src/app/results/page.tsx` - evaluation results view
 - `src/app/feedback/page.tsx` - feedback guide
 - `src/app/globals.css` - global styles
+
+## Previews
+
+PRs that touch this package automatically get a Cloudflare Pages preview link,
+posted as a comment on the PR by the `Deploy web UI` workflow. Pushing new
+commits updates the same comment instead of posting duplicates. Merging to
+`main` redeploys the production site at `https://cv-builder-cf-web.pages.dev`.
+
+The build is a static export (`output: "export"` in `next.config.ts`) — the
+app must remain free of server-only features (API routes, server actions,
+middleware, etc.).

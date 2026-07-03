@@ -1,0 +1,112 @@
+name: Deploy web UI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/web-ui/**"
+      # include the workflow itself so edits to this file re-trigger a deploy
+      - ".github/workflows/deploy-web-ui.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/web-ui/**"
+      - ".github/workflows/deploy-web-ui.yml"
+
+concurrency:
+  group: deploy-web-ui-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # Skip PRs from forks: secrets (CLOUDFLARE_*) are not exposed to them.
+    # The repo-name equality form is used so a missing pull_request path is a
+    # hard false (push events skip the second clause entirely) instead of
+    # crashing on a null deref.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write # for sticky-pull-request-comment
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (turbo orchestrates core → web, output lands at apps/web-ui/out)
+        run: pnpm build
+
+      - name: Compute Cloudflare branch alias
+        id: branch
+        shell: bash
+        run: |
+          RAW_BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          SAFE_BRANCH="$(printf '%s' "$RAW_BRANCH" | tr '/' '-' | tr -cd '[:alnum:]._-')"
+          echo "name=${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+
+      - name: Verify Cloudflare Pages project exists
+        id: preflight
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_PROJECT_NAME: cv-builder-cf-web
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Capture the response body even on HTTP errors so we can print the
+          # Cloudflare error code in the failure log (curl -f would otherwise
+          # discard it and we'd only see the HTTP status).
+          HTTP_CODE="$(curl -sS -o preflight.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${CF_PROJECT_NAME}")"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::Cloudflare API returned HTTP ${HTTP_CODE} for project '${CF_PROJECT_NAME}' on account ${CF_ACCOUNT_ID}."
+            echo "Response body:"
+            cat preflight.json
+            echo
+            # Decode the most common Cloudflare error codes inline.
+            case "$HTTP_CODE" in
+              401) echo "::error::Token rejected. The CLOUDFLARE_API_TOKEN secret is invalid or expired. Revoke and re-create it." ;;
+              403) echo "::error::Token lacks permission. Ensure the token has 'Account → Cloudflare Pages: Edit' on this account." ;;
+              400) echo "::error::Bad request. Check the error codes in the body above — typically code 7000 means the account ID is wrong or the token isn't scoped to this account." ;;
+              404) echo "::error::Project not found. Either the project name in the workflow doesn't match Cloudflare (check for typos / casing) or the project was never created." ;;
+            esac
+            exit 1
+          fi
+          echo "Project ${CF_PROJECT_NAME} is reachable on account ${CF_ACCOUNT_ID}."
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/web-ui
+          # --commit-dirty=true is required: the wrangler-action sets CI=1 and would otherwise refuse a deploy with apps/web-ui/out/ as an uncommitted change.
+          # --branch dodges the detached-HEAD trap on PR checkouts: without it
+          # wrangler reads "HEAD" from git and Cloudflare rejects the alias.
+          # Cloudflare Pages aliases reject "/", so we collapse refs to a
+          # safe form (e.g. "ci/cloudflare-pages-preview" -> "ci-cloudflare-pages-preview").
+          command: >-
+            pages deploy out
+            --project-name=cv-builder-cf-web
+            --commit-dirty=true
+            --branch=${{ steps.branch.outputs.name }}
+
+      - name: Post preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: cv-builder-cf-web-preview-deploy
+          message: |
+            🌐 **Preview deployment:** ${{ steps.deploy.outputs.pages-deployment-alias-url }}
