@@ -197,6 +197,7 @@ pack):
 - QA / Test Engineer
 - DevOps / SRE
 - Data Engineer
+- Mobile Engineer
 
 **Want to add your role?** Use the [New Archetype issue template](.github/ISSUE_TEMPLATE/new_archetype.md) and submit a PR. Each archetype needs 15+ keywords, evaluation weights, action verbs, and anti-patterns.
 
@@ -206,7 +207,7 @@ pack):
 
 ### v0.1 (Current Sprint — MVP)
 - [x] Core evaluation engine with 6 dimensions
-- [x] 7 role archetypes
+- [x] 8 role archetypes
 - [x] Universal anti-pattern detection
 - [x] CLI: basic evaluate command
 - [x] Web UI: paste and score screen (local demo)
