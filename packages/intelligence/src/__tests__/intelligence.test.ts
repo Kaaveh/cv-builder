@@ -37,6 +37,13 @@ describe("detectArchetype", () => {
     expect(detectArchetype(text).id).toBe("product-manager");
   });
 
+  it("detects a mobile engineer resume", () => {
+    const text =
+      "Built iOS features in Swift and SwiftUI, shipped Android screens with Kotlin " +
+      "and Jetpack Compose, released through TestFlight and Google Play Console.";
+    expect(detectArchetype(text).id).toBe("mobile-engineer");
+  });
+
   it("falls back to the default on no signal", () => {
     expect(detectArchetype("hello world").id).toBe("software-engineer");
   });

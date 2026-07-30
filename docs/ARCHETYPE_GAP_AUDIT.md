@@ -94,6 +94,7 @@ registries being out of sync — is filed as a follow-up issue and
 | `software-engineer` | Software Engineer | ❌ | ✅ | ❌ (eval fixtures only) | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ (eval fixture `swe-strong`) | Lives only in `intelligence`. Not exposed in the live CLI/Web UI. |
 | `product-manager` | Product Manager | ❌ | ✅ | ❌ (eval fixtures only) | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ (eval fixture `pm-strong`) | Lives only in `intelligence`. **Plain PM detection is broken in the live system** — see *Highest-priority gap* below. |
 | `data-ml-engineer` | Data & ML Engineer | ❌ | ✅ | ❌ (eval fixtures only) | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ (eval fixture `data-ml-strong`) | Lives only in `intelligence`. Different id from `core.data-engineer`. |
+| `mobile-engineer` | Mobile Engineer | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ (`core.__tests__/archetypes.test.ts`, `intelligence` detect test) | Closes issue #1. Added to both registries with matching content, keeping the two in sync rather than widening the gap. No `intelligence` eval fixture yet. |
 
 **Notes on the table:**
 
@@ -123,7 +124,7 @@ registries being out of sync — is filed as a follow-up issue and
 | AI Engineer | Issue #81, PR #69 (rubric v1 base) | ✅ Implemented in `core` as `ai-engineer` | `intelligence` has `software-engineer` (broader) but not `ai-engineer`. |
 | QA / Test Engineer | Issue #5 (closed), PR #28 | ✅ Implemented in `core` as `qa-test-engineer` | |
 | Machine Learning Engineer | Issue #3 | ❌ Missing | Closest existing: `intelligence.data-ml-engineer` (and `core.ai-engineer`). No plain `ml-engineer` (scikit-learn, classical ML) anywhere. |
-| Mobile Engineer (iOS/Android) | Issue #1 | ❌ Missing | From `scripts/create-issues.sh` seed list. |
+| Mobile Engineer (iOS/Android) | Issue #1 | ✅ Implemented in both `core` (`mobile-engineer`) and `intelligence` (`mobile-engineer`) | Closed by the follow-up PR to this audit. |
 | Security Engineer | Issue #2 | ❌ Missing | From `scripts/create-issues.sh` seed list. |
 | Full-Stack Engineer | Issue #4 | ❌ Missing | From `scripts/create-issues.sh` seed list. |
 | Technical Program Manager | Issue #6 | ❌ Missing | From `scripts/create-issues.sh` seed list. |
