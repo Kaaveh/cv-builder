@@ -497,6 +497,8 @@ ARCHETYPES.set("mobile-engineer", {
   name: "Mobile Engineer",
   description: "iOS/Android engineers building native and cross-platform mobile apps",
   keywords: [
+    "ios",
+    "android",
     "swift",
     "swiftui",
     "objective-c",
@@ -535,18 +537,18 @@ ARCHETYPES.set("mobile-engineer", {
     publicProof: 0.1,
   },
   actionVerbs: [
-    "Built",
     "Shipped",
     "Launched",
+    "Released",
+    "Migrated",
     "Optimized",
     "Reduced",
-    "Migrated",
     "Refactored",
     "Integrated",
-    "Released",
     "Automated",
     "Debugged",
-    "Improved",
+    "Instrumented",
+    "Profiled",
   ],
   antiPatterns: [
     "familiar with mobile development",
@@ -578,6 +580,12 @@ export function registerArchetype(archetype: RoleArchetype): void {
   ARCHETYPES.set(archetype.id, archetype);
 }
 
+function hasKeyword(text: string, keyword: string): boolean {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // hyphen counts as a word char so "go" doesn't match "go-to-market"
+  return new RegExp(`(?<![\\w-])${escaped}(?![\\w-])`).test(text);
+}
+
 /**
  * Auto-detect the best archetype based on CV content and optional JD.
  * Uses keyword frequency matching to determine the closest fit.
@@ -590,7 +598,7 @@ export function detectArchetype(cvContent: string, jdContent?: string): RoleArch
 
   for (const archetype of ARCHETYPES.values()) {
     const matchCount = archetype.keywords.filter((kw) =>
-      text.includes(kw.toLowerCase())
+      hasKeyword(text, kw.toLowerCase())
     ).length;
     const score = matchCount / archetype.keywords.length;
 

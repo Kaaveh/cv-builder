@@ -44,6 +44,15 @@ describe("detectArchetype", () => {
     expect(detectArchetype(text).id).toBe("mobile-engineer");
   });
 
+  it("detects platform-only mobile mentions", () => {
+    expect(detectArchetype("Shipped iOS apps for the retail team.").id).toBe(
+      "mobile-engineer"
+    );
+    expect(detectArchetype("Shipped Android apps for the retail team.").id).toBe(
+      "mobile-engineer"
+    );
+  });
+
   it("falls back to the default on no signal", () => {
     expect(detectArchetype("hello world").id).toBe("software-engineer");
   });

@@ -32,4 +32,18 @@ describe("mobile-engineer archetype", () => {
       "and Jetpack Compose, released through TestFlight and Google Play Console.";
     expect(detectArchetype(text).id).toBe("mobile-engineer");
   });
+
+  it("is detected from platform-only mentions", () => {
+    expect(detectArchetype("Shipped iOS apps for the retail team.").id).toBe(
+      "mobile-engineer"
+    );
+    expect(detectArchetype("Shipped Android apps for the retail team.").id).toBe(
+      "mobile-engineer"
+    );
+  });
+
+  it("does not treat 'swiftly' as a swift keyword match", () => {
+    const text = "Swiftly delivered backend services using Node and Postgres.";
+    expect(detectArchetype(text).id).not.toBe("mobile-engineer");
+  });
 });
