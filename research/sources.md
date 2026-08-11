@@ -2,7 +2,7 @@
 
 All research sources used to build CV Builder's rules and scoring engine.
 
-Last updated: May 2026
+Last updated: July 30, 2026
 
 ## Market Data
 
@@ -27,6 +27,11 @@ Last updated: May 2026
 | Machine Learning Engineer | ML engineers build, evaluate, productionize, optimize, monitor, and improve ML models; core areas include model architecture, data/ML pipelines, metrics interpretation, MLOps, and data engineering. | Google Cloud Professional Machine Learning Engineer Exam Guide | https://cloud.google.com/learn/certification/guides/machine-learning-engineer | 2026-06-01 |
 | Machine Learning Engineer | scikit-learn covers model selection, cross-validation, hyperparameter tuning, metrics, pipelines, preprocessing, feature extraction, feature selection, and model persistence. | scikit-learn User Guide | https://scikit-learn.org/stable/user_guide | 2026-06-01 |
 | Machine Learning Engineer | XGBoost's Python API supports scikit-learn-style estimators, evaluation sets, early stopping, feature weights, and feature importance for tree boosters. | XGBoost Python API Reference | https://xgboost.readthedocs.io/en/stable/python/python_api.html | 2026-06-01 |
+| Mobile Engineer | Senior iOS postings now explicitly require Combine and Swift Concurrency (async/await, actors, structured concurrency) alongside UIKit/SwiftUI and MVVM-style architecture, not just legacy UIKit. (§ "About You") | Bumble Inc. — Lead iOS Engineer (Date) | https://jobs.lever.co/bumbleinc/9dd631a9-ba49-4e71-b2d5-b655c943bed9 | 2026-07-30 |
+| Mobile Engineer | iOS postings expect 3+ years shipping Swift-based apps with MVVM (or similar) architecture, SwiftUI + Auto Layout UI work, and a track record of publishing and maintaining live App Store apps. (§ "Does this sound like you") | Airalo — iOS Developer | https://jobs.lever.co/airalo/4c06be41-69bc-4b28-9f8d-df75027e0eda | 2026-07-30 |
+| Mobile Engineer | Android postings expect Kotlin, Jetpack Compose, coroutines, Room, and Hilt, plus hands-on experience publishing at least one app to the Google Play Store. (§ "What We're Looking For") | Match Group (Hinge) — Android Engineer II | https://jobs.lever.co/matchgroup/eeb31906-5f8f-4599-a77a-dbee6c2079c9 | 2026-07-30 |
+| Mobile Engineer | Cross-platform Flutter roles require naming a specific state-management approach (Provider, Bloc, Riverpod, or MobX) and tie mobile performance to concrete metrics like startup time and crash rate. (§ "Requirements") | HighLevel — SDE III, Content Hub (Mobile Flutter) | https://jobs.lever.co/gohighlevel/d792b13b-f415-4164-b295-2d37f122ba32 | 2026-07-30 |
+| Mobile Engineer | Recruiters for senior iOS roles screen for shipped native apps in production, Fastlane/CI tooling, and disciplined release practices backed by crash and performance monitoring. (§ "QUALIFICATIONS") | Whoop — Senior iOS Engineer (Healthcare) | https://jobs.lever.co/whoop/e3fc699a-e921-4015-8f0a-652af1cdb0a2 | 2026-07-30 |
 
 ## Expert Opinions
 

@@ -492,6 +492,74 @@ ARCHETYPES.set("data-engineer", {
   ],
 });
 
+ARCHETYPES.set("mobile-engineer", {
+  id: "mobile-engineer",
+  name: "Mobile Engineer",
+  description: "iOS/Android engineers building native and cross-platform mobile apps",
+  keywords: [
+    "ios",
+    "android",
+    "swift",
+    "swiftui",
+    "objective-c",
+    "uikit",
+    "kotlin",
+    "jetpack compose",
+    "android sdk",
+    "xcode",
+    "android studio",
+    "react native",
+    "flutter",
+    "dart",
+    "kotlin multiplatform",
+    "core data",
+    "room",
+    "coroutines",
+    "combine",
+    "mvvm",
+    "ci/cd",
+    "fastlane",
+    "app store connect",
+    "google play console",
+    "testflight",
+    "crashlytics",
+    "firebase",
+    "rest api",
+    "push notifications",
+    "deep linking",
+  ],
+  evaluationWeights: {
+    shippedEvidence: 0.3,
+    quantifiedImpact: 0.2,
+    toolingVisibility: 0.2,
+    atsCompatibility: 0.1,
+    keywordMatch: 0.1,
+    publicProof: 0.1,
+  },
+  actionVerbs: [
+    "Shipped",
+    "Launched",
+    "Released",
+    "Migrated",
+    "Optimized",
+    "Reduced",
+    "Refactored",
+    "Integrated",
+    "Automated",
+    "Debugged",
+    "Instrumented",
+    "Profiled",
+  ],
+  antiPatterns: [
+    "familiar with mobile development",
+    "worked on the app",
+    "various mobile frameworks",
+    "responsible for app maintenance",
+    "passionate about mobile technologies",
+    "experience with cross-platform development",
+  ],
+});
+
 // --- Registry API ---
 
 export function getArchetype(id: string): RoleArchetype {
@@ -512,6 +580,12 @@ export function registerArchetype(archetype: RoleArchetype): void {
   ARCHETYPES.set(archetype.id, archetype);
 }
 
+function hasKeyword(text: string, keyword: string): boolean {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // hyphen counts as a word char so "go" doesn't match "go-to-market"
+  return new RegExp(`(?<![\\w-])${escaped}(?![\\w-])`).test(text);
+}
+
 /**
  * Auto-detect the best archetype based on CV content and optional JD.
  * Uses keyword frequency matching to determine the closest fit.
@@ -524,7 +598,7 @@ export function detectArchetype(cvContent: string, jdContent?: string): RoleArch
 
   for (const archetype of ARCHETYPES.values()) {
     const matchCount = archetype.keywords.filter((kw) =>
-      text.includes(kw.toLowerCase())
+      hasKeyword(text, kw.toLowerCase())
     ).length;
     const score = matchCount / archetype.keywords.length;
 
