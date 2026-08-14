@@ -270,10 +270,8 @@ describe("qa-test-engineer archetype", () => {
   });
 
   it("does not treat 'impact' as a 'pact' contract-testing keyword match", () => {
-    const text =
-      "Delivered high impact through improved release quality and fewer customer " +
-      "escalations.";
-    expect(detectArchetype(text).id).not.toBe("qa-test-engineer");
+    expect(detectArchetype("Pact").id).toBe("qa-test-engineer");
+    expect(detectArchetype("impact").id).not.toBe("qa-test-engineer");
   });
 });
 
